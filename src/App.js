@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
-import {commerce} from './lib/commerce';
+import {commerce} from './lib/commerce.js';
 import Products from './components/Products/Products';
 import Navbar from './components/Navbar/Navbar';
 import Cart from './components/Cart/Cart';
@@ -20,11 +20,13 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
     const [order, setOrder] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
   
-    const fetchProducts = async () => {
-      const { data } = await commerce.products.list();
-  
-      setProducts(data);
-    };
+    const fetchProducts = () => {
+      commerce.products.list().then((products) => {
+        setProducts(products.data);
+      }).catch((error) => {
+        console.log('There was an error fetching the products', error)
+      });
+    }
   
     const fetchCart = async () => {
       setCart(await commerce.cart.retrieve());

@@ -2,7 +2,8 @@ import React from 'react'
 import { Card, CardMedia, CardContent, CardActions, Typography, Button,CardActionArea} from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import useStyles from './styles';
+import useStyles from './styles'
+import PropTypes from 'prop-types';
 
 
 const Product = ({product, onAddToCart}) => {
@@ -11,7 +12,7 @@ const Product = ({product, onAddToCart}) => {
         <Card className={classes.root}>
         <Link to={`product-view/${product.id}`} >
         <CardActionArea>
-        <CardMedia className={classes.media} image={product.media.source} title={product.name}  />
+        <CardMedia className={classes.media} image={product.image?.url} title={product.name}  />
         </CardActionArea>
         </Link>
         <CardContent>
@@ -20,7 +21,7 @@ const Product = ({product, onAddToCart}) => {
             {product.name}
             </Typography>
             <Typography variant="h6" color="secondary">
-              ₹<b>{product.price.formatted}</b> 
+              £<b>{product.price.formatted}</b> 
             </Typography>
           </div>
         </CardContent>
@@ -32,5 +33,9 @@ const Product = ({product, onAddToCart}) => {
         </Card>
     )
 }
+
+Product.propTypes = {
+  product: PropTypes.object,
+};
 
 export default Product;
