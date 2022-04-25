@@ -6,7 +6,8 @@
   }
   
   .product-view .image-wrapper img {
-    width: 100%;
+    width: 90%;
+    height: 750px;
   }
   
   .product-view .text {
