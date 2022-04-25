@@ -7,7 +7,7 @@ export default makeStyles(() => ({
   },
   media: {
     height: 0,
-    paddingTop: '100%', 
+    paddingTop: '160%', 
     '&:hover': {
       backgroundColor: '#2a344a',
       boxShadow: 'none',    
