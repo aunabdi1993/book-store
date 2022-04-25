@@ -16,12 +16,12 @@ const ProductView = () => {
     const fetchProduct = async (id) => {
         const response = await commerce.products.retrieve(id);
         console.log({ response });
-        const { name, price, media, quantity, description } = response;
+        const { name, price, quantity, description } = response;
         setProduct({
           name,
           quantity,
           description,
-          src: media.source,
+          img: response.image.url,
           price: price.formatted_with_symbol,
         });
       };
@@ -35,7 +35,7 @@ const ProductView = () => {
         <Container className="product-view">
           <Grid container>
             <Grid item xs={12} md={6} className="image-wrapper">
-              <img src={product.src} alt={product.name}
+              <img src={product.img} alt={product.name}
               />
             </Grid>
             <Grid item xs={12} md={5} className="text">
